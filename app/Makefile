@@ -25,3 +25,14 @@ test:  ## Run pytest
 docker-build: ## Build Docker image
 	poetry export -f requirements.txt > requirements.txt
 	docker build -t ${image} --progress=plain .
+
+.PHONY: docker-run
+docker-run: ## Run locally Docker image
+	docker run -it -p 8020:8020 -e DJANGO_SUPERUSER_USERNAME=admin -e DJANGO_SUPERUSER_PASSWORD=sekret1 -e DJANGO_SUPERUSER_EMAIL=admin@example.com ${image}
+
+.PHONY: docker-push
+docker-push: ## Push Docker image
+	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 784014998421.dkr.ecr.us-east-1.amazonaws.com
+	docker build -t ${image} .
+	docker tag ${image}:latest 784014998421.dkr.ecr.us-east-1.amazonaws.com/${image}:latest
+	docker push 784014998421.dkr.ecr.us-east-1.amazonaws.com/${image}:latest

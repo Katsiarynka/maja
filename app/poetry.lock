@@ -77,6 +77,17 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-cors-headers"
+version = "3.13.0"
+description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "djangorestframework"
 version = "3.14.0"
 description = "Web APIs for Django, made easy."
@@ -87,27 +98,6 @@ python-versions = ">=3.6"
 [package.dependencies]
 django = ">=3.0"
 pytz = "*"
-
-[[package]]
-name = "djangorestframework-simplejwt"
-version = "5.2.2"
-description = "A minimal JSON Web Token authentication plugin for Django REST Framework"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-django = "*"
-djangorestframework = "*"
-pyjwt = ">=1.7.1,<3"
-
-[package.extras]
-crypto = ["cryptography (>=3.3.1)"]
-dev = ["pytest-watch", "wheel", "twine", "ipython", "cryptography", "pytest-cov", "pytest-django", "pytest-xdist", "pytest", "tox", "flake8", "pep8", "isort", "Sphinx (>=1.6.5,<2)", "sphinx-rtd-theme (>=0.1.9)", "python-jose (==3.3.0)"]
-doc = ["Sphinx (>=1.6.5,<2)", "sphinx-rtd-theme (>=0.1.9)"]
-lint = ["flake8", "pep8", "isort"]
-python-jose = ["python-jose (==3.3.0)"]
-test = ["cryptography", "pytest-cov", "pytest-django", "pytest-xdist", "pytest", "tox"]
 
 [[package]]
 name = "ecpy"
@@ -294,7 +284,7 @@ websockets = [
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "f99be9701d7646eeae56dc3809f773271eb45a9e324028945e6ad5884e352dca"
+content-hash = "99fe506b0217b58d6e7cc8b6e3b944f7fca9d2f43c0b26fba9160bfabea3f9c2"
 
 [metadata.files]
 anyio = []
@@ -303,8 +293,8 @@ base58 = []
 certifi = []
 deprecated = []
 django = []
+django-cors-headers = []
 djangorestframework = []
-djangorestframework-simplejwt = []
 ecpy = []
 h11 = []
 httpcore = []

@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers, serializers, viewsets
-from users.views import EmailTokenObtainPairView, RegisterView
-from rest_framework_simplejwt.views import TokenRefreshView
+from rest_framework import routers
+from users.views import RegisterView
 from creators.views import CreatorViewSet
+from users.urls import urlpatterns as accounts_urls
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -30,9 +30,10 @@ urlpatterns = [
 
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('register/', RegisterView.as_view(), name='token_obtain_pair'),
-    path('token/obtain/', EmailTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # creators
     path('creators/', CreatorViewSet.as_view({'get': 'list'}), name='creators'),
+
+    # login & sign up
+    path('accounts/', include(accounts_urls)),
 ]

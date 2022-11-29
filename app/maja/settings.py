@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
-    'rest_framework.authtoken',
     'creators',
     'users',
 ]
@@ -124,12 +124,21 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOW_CREDENTIALS = True # to accept cookies via ajax request
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000' # the domain for front-end app(you can add more than 1) 
+]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'users.authentication.SafeJWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
 }
+
 AUTH_USER_MODEL = 'users.CustomUser'
 AUTHENTICATION_BACKENDS = ['users.auth_backends.EmailBackend']
+REFRESH_TOKEN_SECRET = 'secret'
