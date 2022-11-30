@@ -2,4 +2,9 @@ from django.contrib import admin
 
 from .models import NFT
 
-admin.site.register(NFT)
+
+class NFTAdmin(admin.ModelAdmin):
+    list_display = ["name", "description", "image", "creator"]
+
+
+admin.site.register(NFT, NFTAdmin)
