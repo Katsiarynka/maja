@@ -15,6 +15,8 @@ format: ## format code (with black & isort)
 init: config_gemfury ## Install packages (with poetry)
 	poetry install
 
+
+
 .PHONY: test
 test:  ## Run pytest
 	poetry run pytest -vv tests \
@@ -36,3 +38,30 @@ docker-push: ## Push Docker image
 	docker build -t ${image} .
 	docker tag ${image}:latest 784014998421.dkr.ecr.us-east-1.amazonaws.com/${image}:latest
 	docker push 784014998421.dkr.ecr.us-east-1.amazonaws.com/${image}:latest
+
+
+clean: clean-build clean-pyc clean-test clean-venv clean-codebraid ## remove python files, env, and build artifacts
+
+clean-build:
+		rm -fr build/
+		rm -fr dist/
+		rm -fr .eggs/
+		find . -name '*.egg-info' -exec rm -fr {} +
+		find . -name '*.egg' -exec rm -f {} +
+
+clean-codebraid:
+		@echo 'Clearing codebraid cache'
+		rm -rf _codebraid
+
+clean-pyc:
+		find . -name '*.pyc' -exec rm -f {} +
+		find . -name '*.pyo' -exec rm -f {} +
+		find . -name '*~' -exec rm -f {} +
+		find . -name '__pycache__' -exec rm -fr {} +
+
+clean-test:
+		rm -f .coverage
+		rm -fr htmlcov/
+
+clean-venv:
+		rm -fr .venv/

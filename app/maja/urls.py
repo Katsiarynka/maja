@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from nft.views import NFTViewSet
 from rest_framework import routers
 from users.views import RegisterView
 from creators.views import CreatorViewSet
@@ -33,6 +34,11 @@ urlpatterns = [
 
     # creators
     path('creators/', CreatorViewSet.as_view({'get': 'list'}), name='creators'),
+    path('creators/<int:pk>/', CreatorViewSet.as_view({'get': 'retrieve'}), name='creator'),
+
+    # nft
+    path('nft/', NFTViewSet.as_view({'get': 'list'}), name='nft'),
+    path('nft/<int:pk>/', NFTViewSet.as_view({'get': 'retrieve'}), name='nft'),
 
     # login & sign up
     path('accounts/', include(accounts_urls)),

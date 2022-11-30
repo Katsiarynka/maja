@@ -6,4 +6,11 @@ from rest_framework import serializers
 class CreatorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Creator
-        fields = ['name', 'website', 'bio', 'twitter', 'instagram', 'youtube', 'tiktok', 'creator_nickname', 'image', 'volume', 'quantity_sold']
+        fields = ['name', 'website', 'bio', 'twitter', 'instagram', 
+            'tiktok', 'creator_nickname', 'image', 'volume', 'quantity_sold']
+
+
+class CreatorShortSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Creator
+        fields = ['name', 'creator_nickname', 'image']

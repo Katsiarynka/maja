@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from nft.serializers import NFTSerializer
 
-# Create your views here.
+from nft.models import NFT
+
+
+# NFT View
+class NFTViewSet(viewsets.ModelViewSet):
+    queryset = NFT.objects.all()
+    serializer_class = NFTSerializer
