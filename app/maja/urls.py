@@ -14,32 +14,32 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from nft.views import NFTViewSet
+from django.urls import include, path
 from rest_framework import routers
-from users.views import RegisterView
-from creators.views import CreatorViewSet
-from users.urls import urlpatterns as accounts_urls
 
+from creators.views import CreatorViewSet
+from nft.views import NFTViewSet
+from users.urls import urlpatterns as accounts_urls
+from users.views import RegisterView
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('captain/', admin.site.urls),
-
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('register/', RegisterView.as_view(), name='token_obtain_pair'),
-
+    path("", include(router.urls)),
+    path("captain/", admin.site.urls),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path("register/", RegisterView.as_view(), name="token_obtain_pair"),
     # creators
-    path('creators/', CreatorViewSet.as_view({'get': 'list'}), name='creators'),
-    path('creators/<int:pk>/', CreatorViewSet.as_view({'get': 'retrieve'}), name='creator'),
-
+    path("creators/", CreatorViewSet.as_view({"get": "list"}), name="creators"),
+    path(
+        "creators/<int:pk>/",
+        CreatorViewSet.as_view({"get": "retrieve"}),
+        name="creator",
+    ),
     # nft
-    path('nft/', NFTViewSet.as_view({'get': 'list'}), name='nft'),
-    path('nft/<int:pk>/', NFTViewSet.as_view({'get': 'retrieve'}), name='nft'),
-
+    path("nft/", NFTViewSet.as_view({"get": "list"}), name="nft"),
+    path("nft/<int:pk>/", NFTViewSet.as_view({"get": "retrieve"}), name="nft"),
     # login & sign up
-    path('accounts/', include(accounts_urls)),
+    path("accounts/", include(accounts_urls)),
 ]

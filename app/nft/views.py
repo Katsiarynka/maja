@@ -1,7 +1,7 @@
 from rest_framework import viewsets
-from nft.serializers import NFTSerializer
 
 from nft.models import NFT
+from nft.serializers import NFTSerializer
 
 
 # NFT View

@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('nft', '0001_initial'),
+        ("nft", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='nft',
-            name='description',
+            model_name="nft",
+            name="description",
             field=models.TextField(blank=True, null=True),
         ),
     ]

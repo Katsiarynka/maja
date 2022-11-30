@@ -6,63 +6,63 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('creators', '0001_initial'),
+        ("creators", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='creator',
-            name='bio',
+            model_name="creator",
+            name="bio",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='creator',
-            name='created_at',
+            model_name="creator",
+            name="created_at",
             field=models.DateTimeField(auto_now_add=True, null=True),
         ),
         migrations.AlterField(
-            model_name='creator',
-            name='creator_nickname',
+            model_name="creator",
+            name="creator_nickname",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='creator',
-            name='email',
+            model_name="creator",
+            name="email",
             field=models.EmailField(blank=True, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='creator',
-            name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='images/'),
+            model_name="creator",
+            name="image",
+            field=models.ImageField(blank=True, null=True, upload_to="images/"),
         ),
         migrations.AlterField(
-            model_name='creator',
-            name='instagram',
+            model_name="creator",
+            name="instagram",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='creator',
-            name='name',
+            model_name="creator",
+            name="name",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='creator',
-            name='tiktok',
+            model_name="creator",
+            name="tiktok",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='creator',
-            name='twitter',
+            model_name="creator",
+            name="twitter",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='creator',
-            name='updated_at',
+            model_name="creator",
+            name="updated_at",
             field=models.DateTimeField(auto_now=True, null=True),
         ),
         migrations.AlterField(
-            model_name='creator',
-            name='website',
+            model_name="creator",
+            name="website",
             field=models.URLField(blank=True, max_length=100, null=True),
         ),
     ]
