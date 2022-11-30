@@ -9,7 +9,7 @@ class Creator(models.Model):
     instagram = models.CharField(max_length=100, null=True, blank=True)
     tiktok = models.CharField(max_length=100, null=True, blank=True)
     creator_nickname = models.CharField(max_length=100, null=True, blank=True)
-    image = models.ImageField(upload_to="images/", null=True, blank=True)
+    image = models.ImageField(upload_to="images/", null=True, blank=True, max_length=255)
     volume = models.IntegerField(default=0)
     quantity_sold = models.IntegerField(default=0)
     email = models.EmailField(max_length=100, null=True, blank=True)
